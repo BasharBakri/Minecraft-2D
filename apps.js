@@ -2,8 +2,10 @@ const skies = document.querySelectorAll('.sky');
 const leaves = document.querySelectorAll('.leaves');
 const divs = document.querySelectorAll('div');
 
-
+let h2 = document.querySelector("h2");
 const buttons = document.querySelectorAll('.btn');
+
+
 const shovel = document.querySelector('#shovel');
 const axe = document.querySelector('#axe');
 const pickAxe = document.querySelector('#pickAxe');
@@ -11,6 +13,11 @@ const inventory = document.querySelector('#inventory');
 
 
 const invArr = [];
+
+function invDisplay(array) {
+  h2.textContent = array.length;
+};
+invDisplay(invArr);
 
 
 
@@ -31,8 +38,9 @@ divs.forEach(grass => {
       grass.classList.remove("grass");
       grass.classList.add("sky");
       invArr.push('dirt');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    }  
+    } 
    });
 });
 
@@ -42,6 +50,7 @@ divs.forEach(stone => {
       stone.classList.remove("stone");
       stone.classList.add("sky");
       invArr.push('stone');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/Cobblestone.png')";
     } 
   });
@@ -53,6 +62,7 @@ divs.forEach(wood => {
       wood.classList.remove("wood");
       wood.classList.add("sky");
       invArr.push('wood');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
     }  
    });
@@ -90,21 +100,25 @@ divs.forEach(dirt => {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
     } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
     } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
     } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.nextElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
+      invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
     }  
    });
@@ -136,23 +150,26 @@ function updateBackgroundImage() {
 
 divs.forEach(block => {
   block.addEventListener('click', ()=> {
+    if(!block.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.contains('sky') || !block.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.contains('sky') || !block.nextElementSibling.classList.contains('sky') || !block.previousElementSibling.classList.contains('sky')){
     if(inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('stone')){
       block.classList.remove("sky");
       block.classList.add("stone");
       invArr.pop();
+      invDisplay(invArr);
       updateBackgroundImage();
     } else if (inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('dirt')){
       block.classList.remove("sky");
       block.classList.add("dirt");
       invArr.pop();
+      invDisplay(invArr);
       updateBackgroundImage();
     } else if (inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('wood')){
       block.classList.remove("sky");
       block.classList.add("wood");
       invArr.pop();
+      invDisplay(invArr);
       updateBackgroundImage();
     } 
-  });
+  }});
 });
-
 
