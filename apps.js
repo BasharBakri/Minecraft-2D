@@ -32,8 +32,8 @@ divs.forEach(grass => {
       grass.classList.add("sky");
       invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    }
-  });
+    }  
+   });
 });
 
 divs.forEach(stone => {
@@ -43,7 +43,7 @@ divs.forEach(stone => {
       stone.classList.add("sky");
       invArr.push('stone');
       inventory.style.backgroundImage = "url('/imgs/Cobblestone.png')";
-    }
+    } 
   });
 });
 
@@ -54,8 +54,8 @@ divs.forEach(wood => {
       wood.classList.add("sky");
       invArr.push('wood');
       inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
-    }
-  });
+    }  
+   });
 });
 
 
@@ -79,8 +79,8 @@ leaves.forEach(leaf => {
     }  else if (axe.classList.contains('selected') && twentyFirstNextSibling.classList.contains('sky')){
       leaf.classList.remove("leaves"); 
       leaf.classList.add("sky");
-    }
-  });
+    }  
+   });
 });
 
 
@@ -106,8 +106,8 @@ divs.forEach(dirt => {
       dirt.classList.add("sky");
       invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    }
-  });
+    }  
+   });
 });
 
 function updateBackgroundImage() {
@@ -151,7 +151,7 @@ divs.forEach(block => {
       block.classList.add("wood");
       invArr.pop();
       updateBackgroundImage();
-    }
+    } 
   });
 });
 

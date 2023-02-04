@@ -93,9 +93,7 @@ button:hover {
   background-color: rgb(116, 179, 255);
 }
 
-.sky:hover {
-  border: 1px black solid;
-}
+
 
 .dirt {
   background-image: url(/imgs/dirt.png);
@@ -139,4 +137,8 @@ button:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+div:hover {
+  border: 1px black solid;
 }
