@@ -15,6 +15,7 @@ body {
   grid-template-columns: 1fr 4fr 1fr;
 }
 
+/* left navbar */
 .menu {
   background-color: #CCC;
   display: flex;
@@ -76,20 +77,16 @@ body {
   background-size: contain;
 }
 
-
-
 button:hover {
   cursor: pointer;
 }
-
 
 .selected {
   background-color: rgb(116, 179, 255);
 }
 
 
-
-
+/* middle grid */
 
 #gameBoard {
   width: 100vmin;
@@ -105,8 +102,6 @@ button:hover {
 .sky {
   background-color: rgb(116, 179, 255);
 }
-
-
 
 .dirt {
   background-image: url(/imgs/dirt.png);
@@ -152,6 +147,6 @@ button:hover {
   background-size: contain;
 }
 
-div:hover {
+#gameBoard div:hover {
   border: 1px black solid;
 }

@@ -19,7 +19,24 @@ function invDisplay(array) {
 };
 invDisplay(invArr);
 
-
+function updateBackgroundImage() {
+  let lastElement = invArr[invArr.length - 1];
+  if (lastElement) {
+    if (lastElement.includes('stone')){
+      inventory.style.backgroundImage = "url('/imgs/Cobblestone.png')";
+    } else if (lastElement.includes('wood')){
+      inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
+    } else if (lastElement.includes('dirt')){
+      inventory.style.backgroundImage = "url('/imgs/dirt.png')";
+    }  else if (lastElement.includes('grass')){
+      inventory.style.backgroundImage = "url('/imgs/dirt.png')";
+    } 
+    else {
+      inventory.style.backgroundImage = "url('/imgs/inv.png')";
+    }
+    
+  } else {inventory.style.backgroundImage = "url('/imgs/inv.png')";}
+};
 
 
 buttons.forEach(buttonEL => {
@@ -40,7 +57,7 @@ divs.forEach(grass => {
       invArr.push('dirt');
       invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    } 
+    }
    });
 });
 
@@ -123,24 +140,7 @@ divs.forEach(dirt => {
    });
 });
 
-function updateBackgroundImage() {
-  let lastElement = invArr[invArr.length - 1];
-  if (lastElement) {
-    if (lastElement.includes('stone')){
-      inventory.style.backgroundImage = "url('/imgs/Cobblestone.png')";
-    } else if (lastElement.includes('wood')){
-      inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
-    } else if (lastElement.includes('dirt')){
-      inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    }  else if (lastElement.includes('grass')){
-      inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    } 
-    else {
-      inventory.style.backgroundImage = "url('/imgs/inv.png')";
-    }
-    
-  } else {inventory.style.backgroundImage = "url('/imgs/inv.png')";}
-};
+
 
 
 // Place blocks 

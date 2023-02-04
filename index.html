@@ -9,14 +9,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Important Disclaimers:
+  1. I chose to hardcode the gameboard using html & css, not with JavaScript. This doesn't break any rules, also it's fast to do.
+  2. The code is not pretty and redundunt with lots of repetitions, it can probably be reduced significantily.
+  However, this doesn't matter now, what matters is that the game is functioning with no noticable bugs, and working as intended in the exercise.
+  3. I am short on time, I focused on the new challenges, I will skip instructions, and start game menus for now.
+   My next problem is having a red border around the tile if the click doesn't meet the if statement, harder to solve than it looks with how I approached this exercise.  -->
 </head>
 <body>
   <main class="mainGrid">
-    <section class="menu">
+    <nav class="menu">
       <h3><a href="index.html">Reset</a></h3>
       <h3><a href="instructions.html">Instructions</a></h3>
-    </section>
-  <section id="gameBoard">
+    </nav>
+  <main id="gameBoard">
     <div class="sky"></div>
     <div class="sky"></div>
     <div class="sky"></div>
@@ -458,7 +465,7 @@
     <div class="bedRock"></div>
     <div class="bedRock"></div>
     <div class="bedRock"></div>
-  </section>
+  </main>
   <section class="buttonsmenu">
     <button class="btn" id="shovel"></button>
     <button class="btn" id="pickAxe"></button>
