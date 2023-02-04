@@ -141,7 +141,17 @@ divs.forEach(block => {
       block.classList.add("stone");
       invArr.pop();
       updateBackgroundImage();
-    };
+    } else if (inventory.classList.contains('selected') && invArr[invArr.length - 1].includes('dirt')){
+      block.classList.remove("sky");
+      block.classList.add("dirt");
+      invArr.pop();
+      updateBackgroundImage();
+    } else if (inventory.classList.contains('selected') && invArr[invArr.length - 1].includes('wood')){
+      block.classList.remove("sky");
+      block.classList.add("wood");
+      invArr.pop();
+      updateBackgroundImage();
+    }
   });
 });
 
