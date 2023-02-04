@@ -79,7 +79,6 @@ leaves.forEach(leaf => {
     if (axe.classList.contains('selected') && leaf.nextElementSibling.classList.contains('sky')) {
       leaf.classList.remove("leaves"); 
       leaf.classList.add("sky");
-      invArr.push('leaves');
     } else if (axe.classList.contains('selected') && leaf.previousElementSibling.classList.contains('sky')){
       leaf.classList.remove("leaves"); 
       leaf.classList.add("sky");
