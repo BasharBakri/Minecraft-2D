@@ -1,8 +1,4 @@
 const skies = document.querySelectorAll('.sky');
-const dirts = document.querySelectorAll('.dirt');
-const grasses = document.querySelectorAll('.grass');
-const stones = document.querySelectorAll('.stone');
-const woods = document.querySelectorAll('.wood');
 const leaves = document.querySelectorAll('.leaves');
 const divs = document.querySelectorAll('div');
 
@@ -29,20 +25,20 @@ buttons.forEach(buttonEL => {
 
 
 
-grasses.forEach(grass => {
+divs.forEach(grass => {
   grass.addEventListener('click', () => {
-    if (shovel.classList.contains('selected')) {
+    if (shovel.classList.contains('selected') && grass.classList.contains('grass') ) {
       grass.classList.remove("grass");
       grass.classList.add("sky");
-      invArr.push('grass');
+      invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
     }
   });
 });
 
-stones.forEach(stone => {
+divs.forEach(stone => {
   stone.addEventListener('click', () => {
-    if (pickAxe.classList.contains('selected')) {
+    if (pickAxe.classList.contains('selected') && stone.classList.contains('stone')) {
       stone.classList.remove("stone");
       stone.classList.add("sky");
       invArr.push('stone');
@@ -51,9 +47,9 @@ stones.forEach(stone => {
   });
 });
 
-woods.forEach(wood => {
+divs.forEach(wood => {
   wood.addEventListener('click', () => {
-    if (axe.classList.contains('selected')) {
+    if (axe.classList.contains('selected') && wood.classList.contains('wood')) {
       wood.classList.remove("wood");
       wood.classList.add("sky");
       invArr.push('wood');
@@ -88,26 +84,24 @@ leaves.forEach(leaf => {
 });
 
 
-dirts.forEach(dirt => {
-  let twentyFirstPreviousSibling = dirt.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling;
-  let twentyFirstNextSibling = dirt.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+divs.forEach(dirt => {
   dirt.addEventListener('click', () => {
-    if (shovel.classList.contains('selected') && dirt.previousElementSibling.classList.contains('sky')) {
+    if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.previousElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    } else if (shovel.classList.contains('selected') && dirt.nextElementSibling.classList.contains('sky')) {
+    } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    } else if (shovel.classList.contains('selected') && twentyFirstNextSibling.classList.contains('sky')) {
+    } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-    } else if (shovel.classList.contains('selected') && twentyFirstPreviousSibling.classList.contains('sky')) {
+    } else if (shovel.classList.contains('selected') && dirt.classList.contains('dirt') && dirt.nextElementSibling.classList.contains('sky')) {
       dirt.classList.remove("dirt");
       dirt.classList.add("sky");
       invArr.push('dirt');
@@ -131,22 +125,28 @@ function updateBackgroundImage() {
     else {
       inventory.style.backgroundImage = "url('/imgs/inv.png')";
     }
-  }
+    
+  } else {inventory.style.backgroundImage = "url('/imgs/inv.png')";}
 };
+
+
+// Place blocks 
+
+
 
 divs.forEach(block => {
   block.addEventListener('click', ()=> {
-    if(inventory.classList.contains('selected') && invArr[invArr.length - 1].includes('stone')){
+    if(inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('stone')){
       block.classList.remove("sky");
       block.classList.add("stone");
       invArr.pop();
       updateBackgroundImage();
-    } else if (inventory.classList.contains('selected') && invArr[invArr.length - 1].includes('dirt')){
+    } else if (inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('dirt')){
       block.classList.remove("sky");
       block.classList.add("dirt");
       invArr.pop();
       updateBackgroundImage();
-    } else if (inventory.classList.contains('selected') && invArr[invArr.length - 1].includes('wood')){
+    } else if (inventory.classList.contains('selected') && block.classList.contains('sky') && invArr[invArr.length - 1].includes('wood')){
       block.classList.remove("sky");
       block.classList.add("wood");
       invArr.pop();
