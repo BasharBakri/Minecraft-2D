@@ -57,6 +57,7 @@ woods.forEach(wood => {
       wood.classList.remove("wood");
       wood.classList.add("sky");
       invArr.push('wood');
+      inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
     }
   });
 });
