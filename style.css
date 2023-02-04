@@ -1,0 +1,142 @@
+body {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: black;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+}
+
+.menu {
+  background-color: #CCC;
+}
+
+.buttonsmenu {
+  background-color: #CCC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* InGame Buttons */
+
+.buttonsmenu #shovel {
+  background-image: url(/imgs/Diamond_Shovel.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 7vh;
+  width: 4vw;
+  background-size: contain;
+}
+
+.buttonsmenu #pickAxe {
+  background-image: url(/imgs/Diamond_Pickaxe.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 7vh;
+  width: 4vw;
+  background-size: contain;
+}
+
+.buttonsmenu #axe {
+  background-image: url(/imgs/Diamond_Axe.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 7vh;
+  width: 4vw;
+  background-size: contain;
+}
+
+.buttonsmenu #inventory {
+  background-image: url(/imgs/inv.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 6vh;
+  width: 3vw;
+  background-size: contain;
+}
+
+
+
+button:hover {
+  cursor: pointer;
+}
+
+
+.selected {
+  background-color: rgb(116, 179, 255);
+}
+
+
+
+
+
+#gameBoard {
+  width: 100vmin;
+  height: 100vmin;
+  display: grid;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+  gap: 0;
+}
+
+/* Texture Classes */
+
+.sky {
+  background-color: rgb(116, 179, 255);
+}
+
+.sky:hover {
+  border: 1px black solid;
+}
+
+.dirt {
+  background-image: url(/imgs/dirt.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass {
+  background-image: url(/imgs/Grass_Block.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.wood {
+  background-image: url(/imgs/Oak_Log.png);
+  background-position: center;
+  background-size: contain;
+}
+
+.leaves {
+  background-image: url(/imgs/Azalea_Leaves.png);
+  background-position: center;
+  background-size: contain;
+}
+
+.stone {
+  background-image: url(/imgs/Cobblestone.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.cloud {
+  background-color: #CCC;
+}
+
+.bedRock {
+  background-image: url(/imgs/bedrock.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
