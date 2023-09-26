@@ -14,10 +14,14 @@ const inventory = document.querySelector('#inventory');
 
 const invArr = [];
 
+// Number of items in inventory to be displayed
+
 function invDisplay(array) {
   h2.textContent = array.length;
 };
 invDisplay(invArr);
+
+// Inventory image function
 
 function updateBackgroundImage() {
   let lastElement = invArr[invArr.length - 1];
@@ -47,7 +51,7 @@ buttons.forEach(buttonEL => {
 });
 
 
-
+// Tile manipulation using tools
 
 divs.forEach(grass => {
   grass.addEventListener('click', () => {
@@ -84,9 +88,6 @@ divs.forEach(wood => {
     }  
    });
 });
-
-
-
 
 
 leaves.forEach(leaf => {
@@ -143,7 +144,7 @@ divs.forEach(dirt => {
 
 
 
-// Place blocks 
+// Placing blocks using inventory
 
 
 
