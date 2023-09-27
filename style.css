@@ -127,6 +127,7 @@ button:hover {
   background-image: url(/imgs/Azalea_Leaves.png);
   background-position: center;
   background-size: contain;
+  background-color: rgb(116, 179, 255);
 }
 
 .stone {

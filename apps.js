@@ -1,29 +1,73 @@
+// Board generation
 const gameBoard = document.querySelector('#gameBoard');
 
+const firstSky = document.querySelector('.firstSky');
 const firstBedRock = document.querySelector('.firstBedRock');
 
-let h2 = document.querySelector("h2");
-const buttons = document.querySelectorAll('.btn');
 
+const cloudPositions = [255, 256, 234, 235, 236];
 
-// Board generation
+const leafPositions = [
+  162,
+  140, 141, 142,
+  118, 119, 120, 121, 122,
+  96, 97, 98, 99, 100, 101, 102,
+];
+const stonePositions = [66, 67, 80, 81, 95, 96, 101];
 
-for (let i = 0; i < 105; i++) {
-  const dirtDiv = document.createElement('div');
-  dirtDiv.classList.add('dirt');
-  firstBedRock.parentNode.insertBefore(dirtDiv, firstBedRock);
+const woodPositions = [78, 57, 36, 15];
+
+function generateBoard() {
+
+  function firstHalf() {
+    for (let i = 0; i < 293; i++) {
+      const blockDiv = document.createElement('div');
+      blockDiv.classList.add('sky');
+      firstSky.parentNode.insertBefore(blockDiv, firstSky.nextSibling);
+      if (cloudPositions.includes(i)) {
+        blockDiv.setAttribute('id', 'cloud');
+      }
+      if (leafPositions.includes(i)) {
+        blockDiv.classList.remove('sky');
+        blockDiv.classList.add('leaves');
+      }
+      if (woodPositions.includes(i)) {
+        blockDiv.classList.remove('sky');
+        blockDiv.classList.add('wood');
+      }
+    }
+  }
+
+  function secondHalf() {
+    for (let i = 0; i < 146; i++) {
+      const blockDiv = document.createElement('div');
+      blockDiv.classList.add('dirt');
+      firstBedRock.parentNode.insertBefore(blockDiv, firstBedRock);
+      if (stonePositions.includes(i)) {
+        blockDiv.classList.remove('dirt');
+        blockDiv.classList.add('stone');
+      }
+      if (i < 21 && i !== 5) {
+        blockDiv.classList.remove('dirt');
+        blockDiv.classList.add('grass');
+      }
+      if (i >= 126) {
+        blockDiv.classList.remove('dirt');
+        blockDiv.classList.add('bedRock');
+      }
+    }
+  }
+  firstHalf();
+  secondHalf();
 }
 
-for (let i = 0; i < 20; i++) {
-  const bedRockDiv = document.createElement('div');
-  bedRockDiv.classList.add('bedRock');
-  firstBedRock.parentNode.insertBefore(bedRockDiv, firstBedRock.nextSibling);
-}
+generateBoard();
 
 
 const invArr = [];
 
 // Number of items in inventory to be displayed
+let h2 = document.querySelector("h2");
 
 function invDisplay(array) {
   h2.textContent = array.length;
@@ -31,6 +75,9 @@ function invDisplay(array) {
 invDisplay(invArr);
 
 //tools and selection
+
+const buttons = document.querySelectorAll('.btn');
+
 const shovel = document.querySelector('#shovel');
 const axe = document.querySelector('#axe');
 const pickAxe = document.querySelector('#pickAxe');
@@ -45,7 +92,7 @@ buttons.forEach(buttonEL => {
 });
 
 
-// Select top, bottom blocks of clicked element.
+// Select top, bottom blocks of element.
 
 function getSibling(element, n) {
   let sibling = element;
@@ -56,7 +103,7 @@ function getSibling(element, n) {
   return sibling;
 }
 
-// Check if left,right,bottom are sky blocks
+// Check if left,right,bottom, top are sky blocks
 
 function isSkyAround(element) {
   const rightBlock = element.nextElementSibling;
@@ -110,6 +157,7 @@ function updateInvImage() {
   } else { inventory.style.backgroundImage = "url('/imgs/inv.png')"; }
 };
 
+// event listener for board
 
 gameBoard.addEventListener('click', function (event) {
   const block = event.target;
@@ -156,6 +204,8 @@ gameBoard.addEventListener('click', function (event) {
       block.classList.add("sky");
     }
   }
+  // placing items and inventory update
+
   if (inventory.classList.contains('selected') && block.classList.contains('sky') && canPlaceBlock(block)) {
     const lastItem = invArr.pop();
     console.log(lastItem);
