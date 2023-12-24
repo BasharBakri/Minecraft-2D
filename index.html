@@ -17,17 +17,28 @@
   <main class="mainGrid">
     <nav class="menu">
       <h3><a href="index.html">Reset</a></h3>
-      <h3><a href="instructions.html">Instructions</a></h3>
+      <h3 id="instructions">Instructions</h3>
     </nav>
+    <div id="myModal" class="modal">
+
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>How to Play</p>
+        <div class="toolStyle" id="shovelShow"></div>
+        <!-- to be continued... -->
+        <div class="toolStyle"></div>
+        <div class="toolStyle"></div>
+      </div>
+    </div>
     <main id="gameBoard">
       <div class="sky firstSky"></div>
       <div class="firstBedRock bedRock"></div>
     </main>
     <section class="buttonsmenu">
-      <button class="btn" id="shovel"></button>
-      <button class="btn" id="pickAxe"></button>
-      <button class="btn" id="axe"></button>
-      <button class="btn" id="inventory"></button>
+      <button class="btn toolStyle" id="shovel"></button>
+      <button class="btn toolStyle" id="pickAxe"></button>
+      <button class="btn toolStyle" id="axe"></button>
+      <button class="btn toolStyle" id="inventory"></button>
       <h2></h2>
     </section>
   </main>

@@ -1,3 +1,25 @@
+// instructions modal
+
+const instructions = document.querySelector('#instructions');
+
+const modal = document.getElementById("myModal");
+
+const modalClose = document.getElementsByClassName("close")[0];
+
+instructions.onclick = function () {
+  modal.style.display = "block";
+};
+
+modalClose.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 // Board generation
 const gameBoard = document.querySelector('#gameBoard');
 
