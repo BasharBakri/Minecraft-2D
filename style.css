@@ -47,21 +47,15 @@ body {
 
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
   /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
   background-color: rgb(0, 0, 0);
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
@@ -69,7 +63,7 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #CCC;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -80,7 +74,7 @@ body {
 .close {
   color: #aaaaaa;
   float: right;
-  font-size: 28px;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -89,6 +83,32 @@ body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* instructions tooltip container */
+
+.toolTipContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 3rem 0;
+  justify-content: space-around;
+}
+
+
+#plusShow {
+  background-image: url(/imgs/minecraftPlus.png);
+}
+
+#checkShow {
+  background-image: url(/imgs/check-mark.png);
+}
+
+#xShow {
+  background-image: url(/imgs/pixel-X.png);
+}
+
+#skyShow {
+  background-image: url(/imgs/sky.png);
 }
 
 /* InGame Buttons */
@@ -114,7 +134,8 @@ body {
   background-image: url(/imgs/Diamond_Axe.png);
 }
 
-.buttonsmenu #inventory {
+.buttonsmenu #inventory,
+#invShow {
   background-image: url(/imgs/inv.png);
 }
 
@@ -144,7 +165,8 @@ button:hover {
   background-color: rgb(116, 179, 255);
 }
 
-.dirt {
+.dirt,
+#dirtShow {
   background-image: url(/imgs/dirt.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -171,7 +193,8 @@ button:hover {
   background-color: rgb(116, 179, 255);
 }
 
-.stone {
+.stone,
+#stoneShow {
   background-image: url(/imgs/Cobblestone.png);
   background-position: center;
   background-repeat: no-repeat;
