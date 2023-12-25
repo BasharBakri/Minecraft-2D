@@ -94,7 +94,6 @@ body {
   justify-content: space-around;
 }
 
-
 #plusShow {
   background-image: url(/imgs/minecraftPlus.png);
 }
@@ -169,15 +168,13 @@ button:hover {
 #dirtShow {
   background-image: url(/imgs/dirt.png);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: contain;
 }
 
 .grass {
   background-image: url(/imgs/Grass_Block.png);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-position: center;
+  background-size: cover;
 }
 
 .wood {
@@ -197,7 +194,6 @@ button:hover {
 #stoneShow {
   background-image: url(/imgs/Cobblestone.png);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: contain;
 }
 
@@ -208,7 +204,6 @@ button:hover {
 .bedRock {
   background-image: url(/imgs/bedrock.png);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: contain;
 }
 
