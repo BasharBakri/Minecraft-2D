@@ -1,25 +1,3 @@
-// instructions modal
-
-const instructions = document.querySelector('#instructions');
-
-const modal = document.getElementById("myModal");
-
-const modalClose = document.getElementsByClassName("close")[0];
-
-instructions.onclick = function () {
-  modal.style.display = "block";
-};
-
-modalClose.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 // Board generation
 const gameBoard = document.querySelector('#gameBoard');
 
@@ -95,6 +73,28 @@ function invDisplay(array) {
   h2.textContent = array.length;
 };
 invDisplay(invArr);
+
+// instructions modal
+
+const instructions = document.querySelector('#instructions');
+
+const modal = document.getElementById("myModal");
+
+const modalClose = document.getElementsByClassName("close")[0];
+
+instructions.onclick = function () {
+  modal.style.display = "block";
+};
+
+modalClose.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 //tools and selection
 
@@ -182,7 +182,11 @@ function updateInvImage() {
 // event listener for board
 
 gameBoard.addEventListener('click', function (event) {
-  const block = event.target;
+
+  const block = event.target.closest('div');
+  if (!block || !gameBoard.contains(block)) return;
+
+  let changesOccurred = false;
 
   if (isSkyAround(block)) {
 
@@ -193,37 +197,41 @@ gameBoard.addEventListener('click', function (event) {
       invArr.push('dirt');
       invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
-
+      changesOccurred = true;
     }
     // Remove grass logic
-    if (shovel.classList.contains('selected') && block.classList.contains("grass")) {
+    else if (shovel.classList.contains('selected') && block.classList.contains("grass")) {
       block.classList.remove("grass");
       block.classList.add("sky");
       invArr.push('dirt');
       invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/dirt.png')";
+      changesOccurred = true;
     }
-    if (pickAxe.classList.contains('selected') && block.classList.contains('stone')) {
+    else if (pickAxe.classList.contains('selected') && block.classList.contains('stone')) {
       block.classList.remove("stone");
       block.classList.add("sky");
       invArr.push('stone');
       invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/Cobblestone.png')";
+      changesOccurred = true;
     }
 
     // Logic for axe and wood
-    if (axe.classList.contains('selected') && block.classList.contains('wood')) {
+    else if (axe.classList.contains('selected') && block.classList.contains('wood')) {
       block.classList.remove("wood");
       block.classList.add("sky");
       invArr.push('wood');
       invDisplay(invArr);
       inventory.style.backgroundImage = "url('/imgs/Oak_Log.png')";
+      changesOccurred = true;
     }
 
     // axe and leaves logic
-    if (axe.classList.contains('selected') && block.classList.contains('leaves')) {
+    else if (axe.classList.contains('selected') && block.classList.contains('leaves')) {
       block.classList.remove("leaves");
       block.classList.add("sky");
+      changesOccurred = true;
     }
   }
   // placing items and inventory update
@@ -238,15 +246,24 @@ gameBoard.addEventListener('click', function (event) {
       case 'dirt':
         block.classList.remove("sky");
         block.classList.add("dirt");
+        changesOccurred = true;
         break;
       case 'stone':
         block.classList.remove("sky");
         block.classList.add("stone");
+        changesOccurred = true;
         break;
       case 'wood':
         block.classList.remove("sky");
         block.classList.add("wood");
+        changesOccurred = true;
         break;
     }
+  }
+  if (!changesOccurred) {
+    block.style.border = "1px solid red";
+    setTimeout(function () {
+      block.style.border = "none";
+    }, 120);
   }
 });
